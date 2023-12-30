@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Book Reviews @if(isset($title)) {{ ' | '.$title}} @endif</title>
+        <title>Reviews @if(isset($title)) {{ ' | '.$title}} @endif</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -53,6 +53,28 @@
                         class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
                         >Admin Home</a
                     >
+
+                    <a
+                        href="{{ route('admin-users') }}"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >All Users</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >Create User</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >All Posts</a
+                    >
+                    <a
+                        href="#"
+                        class="block px-4 py-2 hover:bg-indigo-800 rounded-md"
+                        >Create Post</a
+                    >
+
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a :href="route('logout')"
