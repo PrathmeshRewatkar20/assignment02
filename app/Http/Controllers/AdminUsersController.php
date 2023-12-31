@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\EditUserRequest;
-use App\Models\Role;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -17,7 +17,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(3);
 
         return view('admin.users.index', compact(['users']));
     }
@@ -27,7 +27,6 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-        //
         $roles = Role::all();
         return view('admin.users.create', compact('roles'));
     }
@@ -40,6 +39,7 @@ class AdminUsersController extends Controller
         $user = $request->all();
         $user['password'] = Hash::make('Admin123');
         User::create($user);
+        ;
 
         Session::flash('admin_flash', 'User created successfully.');
         return redirect(route('admin-users'));
@@ -58,7 +58,6 @@ class AdminUsersController extends Controller
      */
     public function edit(string $id)
     {
-
         $user = User::find($id);
         if( $user == null) {
             Session::flash('admin_flash', 'User does not exist.');
@@ -73,7 +72,6 @@ class AdminUsersController extends Controller
      */
     public function update(EditUserRequest $request, string $id)
     {
-
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);
