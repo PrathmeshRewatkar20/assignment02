@@ -13,22 +13,12 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Title 1'
+            'name' => 'Solo travelers'
         ]);
         Category::create([
-            'name' => 'Title 2'
+            'name' => 'Backpacking'
         ]);
-        Category::create([
-            'name' => 'Title 3'
-        ]);
-        Category::create([
-            'name' => 'Title 4'
-        ]);
-        Category::create([
-            'name' => 'Title 5'
-        ]);
-        Category::create([
-            'name' => 'Title 6'
-        ]);
+
+
     }
 }

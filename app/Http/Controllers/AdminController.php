@@ -11,12 +11,7 @@ class AdminController extends Controller
     }
 
     public function index() {
-        $html = Str::markdown('
-# Heading
-**bold**
-1. One
-2. Two
-        ');
+        $html = Str::markdown('');
         return view('admin.index', ['html' => $html]);
     }
 
